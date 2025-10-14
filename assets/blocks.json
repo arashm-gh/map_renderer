@@ -1,0 +1,22 @@
+{
+  "blocks": [
+    {
+      "name": "grass",
+      "texture_path": "assets/blocks/grass.png",
+      "walkable": true,
+      "collider": true
+    },
+    {
+      "name": "dirt",
+      "texture_path": "assets/blocks/dirt.png",
+      "walkable": true,
+      "collider": true
+    },
+    {
+      "name": "stone",
+      "texture_path": "assets/blocks/stone.png",
+      "walkable": false,
+      "collider": false
+    }
+  ]
+}
