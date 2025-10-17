@@ -48,14 +48,12 @@ impl Map {
     pub fn draw_map(&self, d: &mut RaylibDrawHandle) {
         for block in self.blocks.iter() {
             // error here where they all return None
-            match self.registry.textures.get(block.id.as_str()) {
+            match self.registry.textures.get(&block.name) {
                 Some(tex) => {
                     let (sx, sy) = Self::iso_to_screen(block.x, block.y, block.z, &self.settings);
                     d.draw_texture(tex, sx as i32, sy as i32, Color::WHITE);
                 }
-                None => {
-                    println!("Texture not found.");
-                }
+                None => eprintln!("Texture not found"),
             }
         }
     }

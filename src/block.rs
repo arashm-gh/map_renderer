@@ -13,15 +13,15 @@ pub struct BlockDef {
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Block {
-    pub id: String,
+    pub name: String,
     pub x: f32,
     pub y: f32,
     pub z: f32,
 }
 
 impl Block {
-    pub fn new(id: String, x: f32, y: f32, z: f32) -> Self {
-        Block { id, x, y, z }
+    pub fn new(name: String, x: f32, y: f32, z: f32) -> Self {
+        Block { name, x, y, z }
     }
 }
 
@@ -60,6 +60,9 @@ impl BlockRegistry {
             if t.is_none() {
                 println!("Could not load texture!");
             }
+        }
+        for (i, (name, texture)) in self.textures.iter().enumerate() {
+            println!("TEXTURE {} as {}: {:?}", i, name, texture);
         }
     }
 
