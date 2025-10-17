@@ -47,12 +47,15 @@ impl Map {
 
     pub fn draw_map(&self, d: &mut RaylibDrawHandle) {
         for block in self.blocks.iter() {
-            println!("{}", block.id);
-            println!("{:?}", self.registry.get_texture(&block.id));
-            if let Some(tex) = self.registry.get_texture(&block.id) {
-                let (sx, sy) = Self::iso_to_screen(block.x, block.y, block.z, &self.settings);
-                d.draw_texture(tex, sx as i32, sy as i32, Color::WHITE);
-                println!("Drawing: {:?}", block.id);
+            // error here where they all return None
+            match self.registry.textures.get(block.id.as_str()) {
+                Some(tex) => {
+                    let (sx, sy) = Self::iso_to_screen(block.x, block.y, block.z, &self.settings);
+                    d.draw_texture(tex, sx as i32, sy as i32, Color::WHITE);
+                }
+                None => {
+                    println!("Texture not found.");
+                }
             }
         }
     }

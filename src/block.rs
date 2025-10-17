@@ -55,7 +55,11 @@ impl BlockRegistry {
     pub fn load_textures(&mut self, rl: &mut RaylibHandle, thread: &RaylibThread) {
         for (id, def) in &self.defs {
             let texture = rl.load_texture(thread, &def.texture_path).unwrap();
-            self.textures.insert(id.clone(), texture);
+            println!("Loaded Texture: {:?}", texture);
+            let t = self.textures.insert(id.clone(), texture);
+            if t.is_none() {
+                println!("Could not load texture!");
+            }
         }
     }
 
@@ -64,7 +68,6 @@ impl BlockRegistry {
     }
 
     pub fn get_texture(&self, id: &str) -> Option<&Texture2D> {
-        let tex = self.textures.get(id);
-        tex
+        self.textures.get(id)
     }
 }
