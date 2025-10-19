@@ -1,7 +1,11 @@
 [package]
-name = "map_renderer"
+name = "simple_iso_renderer"
+authors = ["arashm"]
 version = "0.1.0"
 edition = "2024"
+description = "A very barebones Isometric renderer for raylib."
+license = "MIT"
+respository = "https://github.com/arashm-gh/simple_iso_renderer"
 
 [dependencies]
 raylib = { version = "5.5.1", features = ["wayland"] }

@@ -1,5 +1,5 @@
-use map_renderer::*;
 use raylib::prelude::*;
+use simple_iso_renderer::*;
 
 fn main() -> Result<(), ()> {
     let (mut rl, thread) = raylib::init()
@@ -7,7 +7,7 @@ fn main() -> Result<(), ()> {
         .title("Full Map Loader Example")
         .build();
 
-    let mut map: Map = map_renderer::Map::new(
+    let mut map: Map = simple_iso_renderer::Map::new(
         BlockSettings {
             block_width: 32.0,
             block_height: 32.0,
@@ -22,7 +22,7 @@ fn main() -> Result<(), ()> {
     rl.set_target_fps(12);
     while !rl.window_should_close() {
         let mut d = rl.begin_drawing(&thread); // use mode2d for camera
-        d.clear_background(Color::GRAY);
+        d.clear_background(Color::DARKGRAY);
         map.draw_map(&mut d);
     }
 
